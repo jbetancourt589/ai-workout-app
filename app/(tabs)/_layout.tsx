@@ -31,7 +31,8 @@ export default function TabLayout() {
     // 👇 This is where you add margins to the title text
     tabBarLabelStyle: {
        position:'relative',
-      fontSize: 14, // optional - change text size
+      fontSize: 14
+      , // optional - change text size
     },
   }}
 >
