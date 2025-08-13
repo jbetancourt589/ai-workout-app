@@ -1,51 +1,76 @@
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function Login() {
-  const router = useRouter();  // <-- useRouter hook for navigation
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleLogin = () => {
-    // Replace with real authentication logic
-    if (email === 'test@test.com' && password === 'password') {
-        console.log(email, password);
-      router.replace('/(tabs)/workout'); // Navigate to the workouts tab after login
-    } else {
-      setError('Invalid credentials');
-    }
-  };
+export default function Landing() {
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        autoCapitalize="none"
-        keyboardType="email-address"
+      <View style={styles.titleContainer}>
+        <View><Text style={styles.title}>Kraft</Text></View>
+      </View>
+      <Image
+        source={require('../assets/images/landing-image.png')}
+        style={{ width: 300, height: 300, marginBottom: 20 }}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Button title="Login" onPress={handleLogin} />
+      <View style={styles.inputContainer}>
+        <TextInput placeholder="Enter your email" style={styles.input} />
+        <TextInput placeholder="Enter your password" style={styles.input} secureTextEntry />
+      
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Text style={styles.buttonText}>Log In</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 20, backgroundColor: '#fff' },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
-  input: { borderWidth: 1, padding: 10, marginBottom: 10, borderRadius: 5 },
-  error: { color: 'red', marginBottom: 10 },
+
+  container: { 
+    flex: 1, 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    paddingTop: 80, 
+    backgroundColor: '#2f2f2f'  // Changed to a light gray background
+  },
+  titleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  title: { 
+    color: '#FFD700',  
+    marginBottom: 20,  
+    fontSize: 150 
+  },
+  inputContainer: {
+    width: '80%',
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: { 
+    height: 40, 
+    borderColor: 'gray', 
+    borderWidth: 1, 
+    marginBottom: 20, 
+    width: '80%', 
+    backgroundColor: 'white', 
+    padding: 10, 
+    borderRadius: 5,
+    
+  },
+  button: {
+    backgroundColor: '#FFD700',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: '#000', // text color
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });

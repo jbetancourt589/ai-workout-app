@@ -1,6 +1,6 @@
+import { ScreenWrapper } from '@/components/ScreenWrapper';
 import React, { useState } from 'react'; //importing from react library
 import { Button, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
 type WorkoutDay = 'Push' | 'Pull' | 'Legs';
 
 interface Exercise {  
@@ -101,7 +101,8 @@ export default function App() { // WHERE DA REAL CODE STARTS (FUNCT. CODE)
   };
 
   return (
-    <View style={{ flex: 1, padding: 20, backgroundColor: "#fff" }}>
+    <ScreenWrapper>
+    <View style={{ flex: 1, padding: 20}}>
       <Text style={{ fontSize: 22, fontWeight: "bold", marginBottom: 5 }}>Hypertrophy Workout</Text>
 
       {/* Tabs for Push/Pull/Legs */}
@@ -114,7 +115,7 @@ export default function App() { // WHERE DA REAL CODE STARTS (FUNCT. CODE)
       </View>
 
       {/* Exercises List */}
-      <ScrollView style={{ maxHeight: "85%" }}>
+      <ScrollView style={{ flex: 1 }}>
         {workoutData[day].map((exercise, index) => (
           <View key={index} style={{ marginBottom: 20, borderBottomWidth: 1, paddingBottom: 10 }}>
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>{exercise.name}</Text>
@@ -156,5 +157,6 @@ export default function App() { // WHERE DA REAL CODE STARTS (FUNCT. CODE)
         ))}
       </ScrollView>
     </View>
+    </ScreenWrapper>
   );
 }
