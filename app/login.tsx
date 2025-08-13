@@ -1,19 +1,20 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
+
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Landing() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <View><Text style={styles.title}>Kraft</Text></View>
-      </View>
-      <Image
+    <View style={styles.container}><Image
         source={require('../assets/images/landing-image.png')}
         style={{ width: 300, height: 300, marginBottom: 20 }}
       />
+      <View style={styles.titleContainer}>
+        <View><Text style={styles.title}>Kraft</Text></View>
+      </View>
+      
       <View style={styles.inputContainer}>
         <TextInput placeholder="Enter your email" style={styles.input} />
         <TextInput placeholder="Enter your password" style={styles.input} secureTextEntry />
@@ -32,13 +33,13 @@ const styles = StyleSheet.create({
     flex: 1, 
     justifyContent: 'space-between', 
     alignItems: 'center', 
-    paddingTop: 80, 
+    paddingTop: 30, 
     backgroundColor: '#2f2f2f'  // Changed to a light gray background
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 0,
   },
   title: { 
     color: '#FFD700',  

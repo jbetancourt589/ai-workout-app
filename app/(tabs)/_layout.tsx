@@ -1,5 +1,4 @@
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -40,7 +39,7 @@ export default function TabLayout() {
         name="workout"
         options={{
           title: 'Workouts',
-          tabBarIcon: ({ color }) => <IconSymbol size={30} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons size={30} name="home-outline" color={color} />,
         }}
       />
       <Tabs.Screen
