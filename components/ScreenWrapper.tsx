@@ -1,18 +1,18 @@
 // components/ScreenWrapper.tsx
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 interface ScreenWrapperProps {
   children: React.ReactNode;
 }
 
 export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+  return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2f2f2f', // your global background color
+    backgroundColor: '#1C1919', // your global background color
   },
 });

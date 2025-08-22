@@ -1,11 +1,11 @@
 import { HapticTab } from '@/components/HapticTab';
-import TabBarBackground from '@/components/ui/TabBarBackground';
+import BlurTabBarBackground from '@/components/ui/TabBarBackground.ios';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image, Platform } from 'react-native'; // ✅ import Image
 
 
 export default function TabLayout() {
@@ -13,47 +13,46 @@ export default function TabLayout() {
 
   return (
     <Tabs
-  screenOptions={{
-    tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-    headerShown: false,
-    tabBarButton: HapticTab,
-    tabBarBackground: TabBarBackground,
-    tabBarStyle: Platform.select({
-      ios: {
-        
-        height:60,
-      },
-      default: {height:60,
-        
-      },
-      
-    }),
-    // 👇 This is where you add margins to the title text
-    tabBarLabelStyle: {
-       position:'relative',
-      fontSize: 14
-      , // optional - change text size
-    },
-  }}
->
-      <Tabs.Screen
-        name="workout"
-        options={{
-          title: 'Workouts',
-          tabBarIcon: ({ color }) => <Ionicons size={30} name="home-outline" color={color} />,
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerShown: false,
+        tabBarButton: HapticTab,
+        tabBarBackground: BlurTabBarBackground,
+        tabBarStyle: Platform.select({
+          ios: { height: 60 },
+          default: { height: 60 },
+        }),
+        tabBarLabelStyle: {
+          position: 'relative',
+          fontSize: 14,
+        },
+      }}
+    >
+     <Tabs.Screen
+  name="Push"
+  options={{
+    title: 'Push',
+    tabBarIcon: ({ size }) => (
+      <Image
+        source={require('../../assets/images/landing-image.png')}
+        style={{
+          width: size * 1.7,   // make it 20% bigger
+          height: size * 1.7,
+          resizeMode: 'contain',
+        }}
+      />
+          ),
         }}
       />
       <Tabs.Screen
-  name="profile"
-  options={{
-    title: 'Profile',
-    tabBarIcon: ({ color }) => (
-      <Ionicons name="person-outline" size={30} color={color} />
-    ),
-  }}
-/>
-
-      
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="person-outline" size={30} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
