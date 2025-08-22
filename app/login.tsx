@@ -1,6 +1,5 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
-
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Landing() {
@@ -19,7 +18,7 @@ export default function Landing() {
         <TextInput placeholder="Enter your email" style={styles.input} />
         <TextInput placeholder="Enter your password" style={styles.input} secureTextEntry />
       
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => {router.push('/onetimepages/frequencyChooser');}}>
           <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
       </View>
