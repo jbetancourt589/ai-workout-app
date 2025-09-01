@@ -80,7 +80,12 @@ export default function Landing() {
 
             <TouchableOpacity
               style={styles.button}
-              onPress={() => signUp(email, password)}
+              onPress={() => {
+                signUp(email, password);
+                {
+                  router.push("/onetimepages/frequencyChooser");
+                }
+              }}
             >
               <Text style={styles.buttonText}>Log In</Text>
             </TouchableOpacity>
