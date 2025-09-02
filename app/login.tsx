@@ -1,9 +1,36 @@
 import CustomText from '@/components/customText';
+import { auth } from '@/FirebaseConfig';
+import { signInWithEmailAndPassword } from '@firebase/auth';
 import { useRouter } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+ 
+
+
+
+const login = async (email: string, password: string) => {
+  try {
+    // Try signing in with Firebase
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // Optional: log user info to verify connection
+    console.log("Signed in user:", user.email, user.uid);
+
+    alert(`Welcome back, ${user.email}!`); // temporary confirmation
+
+    return true; // successful login
+
+  } catch (error: any) {
+    console.error("Login failed:", error.message);
+    alert("Login failed: " + error.message); // shows error if user doesn't exist or password is wrong
+    return false; // failed login
+  }
+};
 
 export default function Landing() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
   const router = useRouter();
 
   return (
@@ -18,14 +45,30 @@ export default function Landing() {
 
 
       <View style={styles.inputContainer}>
-        <Text style={styles.text}>Username:</Text>
-        <TextInput  style={styles.input} />
+         <TextInput
+                      style={styles.input}
+                      value={email}
+                      onChangeText={setEmail}
+                    />
         <Text style={styles.text}>Password:</Text>
-        <TextInput  style={styles.input} secureTextEntry />
-      
-        <TouchableOpacity style={styles.button} onPress={() => {router.push('/onetimepages/frequencyChooser');}}>
-          <Text style={styles.buttonText}>Log In</Text>
-        </TouchableOpacity>
+                    <TextInput
+                      style={styles.input}
+                      secureTextEntry
+                      value={password}
+                      onChangeText={setPassword}
+                    />
+
+        <TouchableOpacity
+  style={styles.button}
+  onPress={async () => {
+    const success = await login(email, password); // wait for Firebase response
+    if (success) {
+      router.push('/onetimepages/frequencyChooser'); // only navigate if login worked
+    }
+  }}
+>
+  <Text style={styles.buttonText}>Log In</Text>
+</TouchableOpacity>
       </View>
     </View>
   );

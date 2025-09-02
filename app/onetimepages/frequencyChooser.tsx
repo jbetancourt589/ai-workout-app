@@ -61,13 +61,14 @@ export default function frequencyChooser() {
       flex: 1,
       justifyContent: 'flex-start',
       alignItems: 'center', 
+      
     },
     questionBoxProperties: {
       width: 350,
       height: 110,
       backgroundColor: "#1C1919",
       borderRadius: 14,
-      marginTop: 40,
+      marginTop: 10,
       borderColor: "#b28238",
       borderWidth: 2
     },
@@ -75,7 +76,7 @@ export default function frequencyChooser() {
       color: "#b28238",
       fontSize: 27,
       fontFamily: "Nico Moji",
-      padding: 25,
+      padding: 2,
       borderRadius: 12,
     },
     DaysContainer: {
@@ -85,6 +86,7 @@ export default function frequencyChooser() {
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 50,
+      
       borderRadius: 14,
       borderColor: "black",
       borderWidth: 2
@@ -98,7 +100,7 @@ export default function frequencyChooser() {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 150,
+      marginBottom: 60,
     },
     dayButton: {
       width: 330,

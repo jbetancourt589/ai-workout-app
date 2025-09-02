@@ -81,9 +81,9 @@ export default function WorkoutDay({ title, day, subtitle, exercises, muscleGrou
             </TouchableOpacity>
           )
         })}
-        <button style={{ backgroundColor: '#B28238', padding: 10, margin: 20 }}>
-          <CustomText>Submit</CustomText>
-        </button>
+        <TouchableOpacity style={{ backgroundColor: '#B28238', padding: 10, margin: 20 }}>
+          <CustomText style={{ textAlign : 'center' }}>Submit</CustomText>
+        </TouchableOpacity>
       </ScrollView>
     </ScreenWrapper>
   )
