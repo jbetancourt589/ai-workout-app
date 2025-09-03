@@ -8,12 +8,14 @@ export default function goalWeight() {
 
   const [currentWeight, setCurrentWeight] = useState("");
   const [goalWeight, setGoalWeight] = useState("");
+  const currentFilled = currentWeight.trim().length > 0;
+  const goalFilled = goalWeight.trim().length > 0;  //trims off excess whitespace and checks if input is filled
 
   return (
 
-    <ScreenWrapper>
+  <ScreenWrapper>
 
-        <View style={styles.Container}>
+  <View style={styles.Container}>
 
           <View style={styles.questionBoxLocationcontainer}>
             <View style={styles.questionBoxProperties}>
@@ -21,39 +23,40 @@ export default function goalWeight() {
             </View> 
           </View>
 
-         <View style={styles.row}>
-        <View style={styles.Weight}>
+    <View style={styles.row}>
+        <View style={styles.Weight}> 
         <Text style={styles.Text}>Current Weight</Text>
-  </View>
-  <View style={styles.weightInput}>
-    <TextInput
-      style={styles.currentWeightInput}
-      placeholder="lbs"
-      placeholderTextColor="#fff"
-      value={currentWeight}
-      keyboardType="numeric"
-      onChangeText={setCurrentWeight}
-    />
-  </View>
-</View>
+        </View>
 
-<View style={styles.row}>
-  <View style={styles.Weight}>
-    <Text style={styles.Text}>Goal Weight</Text>
+      <View style={[styles.weightInput, currentFilled && styles.activeBox]}>
+        <TextInput
+        style={styles.currentWeightInput}
+        placeholder="lbs"
+        placeholderTextColor="#fff"
+        value={currentWeight}
+        keyboardType="numeric"
+        onChangeText={setCurrentWeight}
+        />
+    </View>
   </View>
-  <View style={styles.weightInput}>
 
-    <TextInput
+  <View style={styles.row}>
+    <View style={styles.Weight}>
+      <Text style={styles.Text}>Goal Weight</Text>
+    </View>
+
+    <View style={[styles.weightInput, goalFilled && styles.activeBox]}>
+      <TextInput
       style={styles.currentWeightInput}
       placeholder="lbs"
       placeholderTextColor="#fff"
       value={goalWeight}
       keyboardType="numeric"
       onChangeText={setGoalWeight}
-    />
+      />
     </View>
     
-    </View>
+  </View>
 
   
     <TouchableOpacity onPress={() => {router.push('/workout');}} style={styles.forwardArrow}>
@@ -63,8 +66,18 @@ export default function goalWeight() {
     </TouchableOpacity>
     
     <View style={styles.arrows}>
+
       <BackArrow onPress={() => {router.push('/onetimepages/frequencyChooser')}} />
-      <ForwardArrow onPress={() => {router.push('/workout');}} />
+
+      {currentFilled && goalFilled && (
+
+      <ForwardArrow onPress={() => {
+      console.log("Current Weight:", currentWeight, "Goal Weight:", goalWeight);
+      router.push('/login');}} >
+      </ForwardArrow>
+
+      )}
+    
     </View>
 
 
@@ -114,7 +127,7 @@ export default function goalWeight() {
     Weight: {
       width: 250,
       height: 70,
-      backgroundColor: "#1C1919",
+      backgroundColor: "#2F2F2F",
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 14,
@@ -125,7 +138,7 @@ export default function goalWeight() {
      weightInput: {
       width: 100,                   // fixed width for lbs
       height: 70,
-      backgroundColor: "#1C1919",
+      backgroundColor: "#2f2f2f",
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 14,
@@ -190,5 +203,9 @@ export default function goalWeight() {
       fontSize: 22,
       fontFamily: "Nico Moji",
       color: "#ffff",
+    },
+    activeBox: {
+      borderColor: "#B28238",
+      borderWidth: 2,
     },
   });
