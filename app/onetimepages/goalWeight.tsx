@@ -1,8 +1,8 @@
-import { BackArrow, ForwardArrow } from "@/components/ui/Arrows";
 import { router } from 'expo-router';
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ScreenWrapper } from "../../components/ScreenWrapper";
+
 
 export default function goalWeight() {
 
@@ -12,8 +12,14 @@ export default function goalWeight() {
   const goalFilled = goalWeight.trim().length > 0;  //trims off excess whitespace and checks if input is filled
 
   return (
+<<<<<<< HEAD
 
   <ScreenWrapper>
+=======
+    
+    <ScreenWrapper>
+      <ScrollView>
+>>>>>>> 923e7c47e2d4d249e420d21b206a1b1f2fcd8fd6
 
   <View style={styles.Container}>
 
@@ -64,6 +70,9 @@ export default function goalWeight() {
         <Text style={styles.SkipText}>Skip For Now</Text>
       </View>
     </TouchableOpacity>
+  
+    
+    
     
     <View style={styles.arrows}>
 
@@ -82,8 +91,9 @@ export default function goalWeight() {
 
 
     </View>
-    
+    </ScrollView>
   </ScreenWrapper>
+  
 
   );
 
@@ -102,19 +112,24 @@ export default function goalWeight() {
       backgroundColor: "#1C1919",
       borderRadius: 14,
       marginTop: 40,
+      marginBottom:80,
       borderColor: "#b28238",
-      borderWidth: 2
+      borderWidth: 2,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     questionTextContainer: {
       color: "#b28238",
-      fontSize: 27,
+      fontSize: 20,
       fontFamily: "Nico Moji",
-      padding: 25,
+      padding: 2,
       borderRadius: 12,
-      marginTop: 12
+  
+      textAlign: 'center',
+       
     },
     Text: {
-      fontSize: 25,
+      fontSize: 15,
       fontFamily: "Nico Moji",
       color: "#ffff",
     },
@@ -172,7 +187,7 @@ export default function goalWeight() {
     },
     currentWeightInput: {
       fontFamily: "Nico Moji",
-      fontSize: 25,
+      fontSize: 15,
       textAlign: 'center',
       color: "#ffff",
       width: '100%',
@@ -197,12 +212,14 @@ export default function goalWeight() {
       borderColor: "#b28238",
       borderWidth: 2,
       marginRight: 12,
-      top: 280
+      padding: 10,
+      marginBottom: 10
     },
     SkipText: {
-      fontSize: 22,
+      fontSize: 15,
       fontFamily: "Nico Moji",
       color: "#ffff",
+      textAlign: 'center',
     },
     activeBox: {
       borderColor: "#B28238",
