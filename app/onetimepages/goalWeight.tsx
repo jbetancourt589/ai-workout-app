@@ -24,43 +24,45 @@ export default function goalWeight() {
 
          <View style={styles.row}>
         <View style={styles.Weight}>
-        <Text style={styles.Text}>Current Weight</Text>
-  </View>
-  <View style={styles.weightInput}>
-    <TextInput
+        <TextInput
       style={styles.currentWeightInput}
-      placeholder="lbs"
+      placeholder="Current weight"
       placeholderTextColor="#fff"
       value={currentWeight}
       keyboardType="numeric"
       onChangeText={setCurrentWeight}
     />
   </View>
+  
 </View>
 
 <View style={styles.row}>
   <View style={styles.Weight}>
-    <Text style={styles.Text}>Goal Weight</Text>
-  </View>
-  <View style={styles.weightInput}>
-
     <TextInput
       style={styles.currentWeightInput}
-      placeholder="lbs"
+      placeholder="Goal Weight"
       placeholderTextColor="#fff"
       value={goalWeight}
       keyboardType="numeric"
       onChangeText={setGoalWeight}
     />
+  </View>
+  
     
     </View>
-    
-    </View>
+    <View style ={{flex:1, flexDirection:'row', gap:75, margin:10}}>
 <TouchableOpacity onPress={() => {router.push('/Push');}} >
       <View style={styles.Skip}>
         <Text style={styles.SkipText}>Skip For Now</Text>
       </View>
     </TouchableOpacity>
+    {currentWeight  && goalWeight  && <TouchableOpacity onPress={() => {router.push('/Push');}} >
+      <View style={styles.Skip}>
+        <Text style={styles.SkipText}>Continue</Text>
+      </View>
+    </TouchableOpacity>}
+    </View>
+    
   
     
     
@@ -124,7 +126,7 @@ export default function goalWeight() {
       borderRadius: 14,
       borderColor: "black",
       borderWidth: 2,
-      marginRight: 12,
+    
     },
      weightInput: {
       width: 100,                   // fixed width for lbs
@@ -153,8 +155,7 @@ export default function goalWeight() {
     row: {
       flexDirection: 'row',         // align horizontally
       alignItems: 'center',         // align vertically centered
-      justifyContent: 'space-between',
-      width: '90%',
+       
       marginBottom: 140 // space at the bottom
     },
     Input: {

@@ -20,7 +20,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
-        initialRouteName='login'
+        initialRouteName='onetimepages/goalWeight'
         screenOptions={{ headerShown: false }} // <- hides all headers
       >
         {' '}
